@@ -2,32 +2,32 @@ package com.restaurants.ordermanagementapi.service;
 
 import com.restaurants.ordermanagementapi.model.Order;
 import com.restaurants.ordermanagementapi.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Mono;
-
-import java.util.Optional;
 
 @Service
 public class OrderService {
+
     private final OrderRepository orderRepository;
 
+    @Autowired
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;
     }
 
-    public Mono<Order> createOrder(Order order) {
+    public Order createOrder(Order order) {
         // Lógica para salvar o pedido no banco de dados
-        return Mono.just(orderRepository.save(order));
+        return orderRepository.save(order);
     }
 
-    public  Mono<Optional<Order>> getOrderById(Long id) {
+    public Order getOrderById(Long id) {
         // Lógica para buscar o pedido por ID
-        return Mono.just(orderRepository.findById(id));
+        return orderRepository.findById(id).orElse(null);
     }
 
-    public  Mono<Order> updateOrder(Long id, Order order) {
+    public Order updateOrder(Long id, Order order) {
         // Lógica para atualizar o pedido
-        return Mono.just(orderRepository.save(order));
+        return orderRepository.save(order);
     }
 
     public void deleteOrder(Long id) {
@@ -35,4 +35,3 @@ public class OrderService {
         orderRepository.deleteById(id);
     }
 }
-

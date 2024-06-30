@@ -1,11 +1,16 @@
 spring:
   application:
     name: order-management-api
-  datasource:
+  r2dbc:
     url: jdbc:mysql://localhost:3306/springdb
     username: springuser
     password: springpassword
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    pool:
+      initial-size: 100
+      max-size: 500
+      max-idle-time: 30m
+      validation-query: SELECT 1
   jpa:
     hibernate:
       ddl-auto: update
