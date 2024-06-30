@@ -1,17 +1,15 @@
-version: '3.8'
+version: '3.1'
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: mysql_container
+  db:
+    platform: linux/x86_64
+    image: mysql
+    container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: springdb
-      MYSQL_USER: springuser
-      MYSQL_PASSWORD: springpassword
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - order_management_data:/var/lib/mysql
 
 volumes:
-  mysql_data:
+  order_management_data:
