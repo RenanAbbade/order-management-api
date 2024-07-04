@@ -1,10 +1,7 @@
 package com.restaurants.ordermanagementapi.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -12,22 +9,25 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 @Entity
 @Table(name = "products")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "quantity")
     private Integer quantity;
+
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
+
     @Column(name = "description")
     private String description;
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
 }
