@@ -1,12 +1,10 @@
 package com.restaurants.ordermanagementapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,8 +27,8 @@ public class Order {
     private Integer tableNumber;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)//FetchType.LAZY will first load the main entity ( Owner), then the related entity ( Blog) on demand.
-    @JoinColumn(name = "product_id")
-    private List<Product> productList;
+    @JoinColumn(name = "order_id")
+    private Set<Product> productList;
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;

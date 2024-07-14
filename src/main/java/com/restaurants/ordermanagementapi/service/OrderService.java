@@ -1,7 +1,6 @@
 package com.restaurants.ordermanagementapi.service;
 
 import com.restaurants.ordermanagementapi.model.Order;
-import com.restaurants.ordermanagementapi.model.Product;
 import com.restaurants.ordermanagementapi.repository.OrderRepository;
 import com.restaurants.ordermanagementapi.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
